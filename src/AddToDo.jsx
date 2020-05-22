@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 export function AddToDo(props){
     return <div>
         <button
             className="button"
-            value={"block"}
-            onClick={e=> props.onChange(String(e.target.value))}
+            value = {props.value}
+            onClick={e => props.onClick(Number(e.target.value)+1)}
         >추가하기</button>
-        
     </div>
 }

@@ -15,6 +15,7 @@ export function Modal(props) {
                             value={props.value}
                             onChange={e=> props.onChange(e.target.value)}
                         />
+                        <button>닫기</button>
                     </div>
                 </div>
             </div>      

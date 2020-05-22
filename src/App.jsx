@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { DateSelector } from './DateSelector';
 import { ToDoList } from './ToDoList'
@@ -11,52 +11,35 @@ function App() {
   let year = today.getFullYear();
   let month = today.getMonth() + 1;
   let date = today.getDate();
-  let day = today.getDay();
   let fulldate = year + '-' + month + '-' + date;
   const [todate , setDate] = useState(fulldate);
-  const [list , setList] = useState(0);
-  const [add , setAdd] = useState("none");
-  const [close , setClose ] = useState("block")
-
-  console.log(fulldate);
-  return (
+  let [todo , setTodo] = useState(0);
+  let [list , setList] = useState([]);
+  let addList = <div>
+    <textarea name="" id="" cols="30" rows="1"></textarea>
+    <button></button>
+  </div>
+  useEffect(() => {
+    if(todo != 0){
+      setList(list = list.concat(addList))
+    }
+  }, [todo])
+  return(
     <html className="App">
-      <Modal 
-        display={close,add}
-      />
-      <Close 
-        value={close}
-        onChange={setClose}
-        display={add}
-
-      />
       <header className="header">
-        <div className="logo_box">
-          <img src="./logo.png" alt="logo" className="logo"/>
-        </div>
+        <div className="logo_box"></div>
       </header>
-      <div className="box_left">
-        <DateSelector value={todate} onChange={setDate}/>
-        <div className="todo_title_box">
-          <p className="todo_title">{todate}의 할일</p>
-        </div>
-        <div className="todo_box">
-          <ToDoList value={list} onChange={setList}/>
-        </div>
-        <AddToDo value={add} onChange={setAdd}/>
+      <DateSelector value={todate} onChange={setDate}/>
+      <div className="todo_title_box">
+        <p className="todo_title">{todate}의 할일</p>
       </div>
-      <div className="box_right">
-        <div className="todo_title_box_right">
-          <p className="todo_title">오늘 해야 할 일</p>
-        </div>
-        <div className="todo_box_right">
-
-        </div>
-        <p className="todo_title">오늘 완료한 일</p>
-        <div className="todo_box_right">
-
+      <div className="todo_box">
+        <div>
+          {list}
         </div>
       </div>
+      <AddToDo value={todo} onClick={setTodo}/>
+      <button onClick = {e => console.log(todo)}></button>
     </html>
   );
 }
