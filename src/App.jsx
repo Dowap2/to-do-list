@@ -14,7 +14,7 @@ function App() {
   
   useEffect(() => {
     if(Object.values(obj) != null){
-      setList(list = Object.values(obj))
+      setList(list = obj[day])
     }
   }, [today])
 
@@ -37,7 +37,7 @@ function App() {
       <TodoDate value={today} onChange={setToday}/>
       <div>
         <div>{today} 할 일 목록</div>
-        <List value={list} />
+        <List value={list}/>
       </div>
     </div>
 
