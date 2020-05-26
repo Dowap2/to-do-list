@@ -14,7 +14,7 @@ export function List(props){
     }
     return(
         <div>
-            <button onClick={e=>console.log(list[0])}></button>
+            <button>일정 전체 삭제</button>
             {arr}
         </div>
     )
