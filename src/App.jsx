@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import DayPickerRangeController from "./DateRangeSelector";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 import { TodoDate } from './TodoDate'
 import { AddTodo } from './AddTodo'
 import { List } from './List'
+import moment from "moment";
 import './App.css'
 
 let obj = {};
 
 function App() {
-  let [today, setToday] = useState("2020-01-01")
+  let [today, setToday] = useState(moment().format('YYYY-MM-DD'))
   let [todo, setTodo] = useState("")
   let [list,setList] = useState()
+  let [date , setDate] = useState(moment().format('YYYYMMDD'))
   let reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
   let day = today.replace(reg, "");
   
@@ -38,6 +43,8 @@ function App() {
     <div>
       <div>
         <h3>날짜를 선택해주세요</h3>
+        <DayPickerRangeController value={date} onChange={setDate}/>
+        <button onClick={e=> console.log(date)}></button>
         <TodoDate value={today} onChange={setToday}/>
       </div>
       <div>
