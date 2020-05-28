@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DayPickerRangeController from "./DateRangeSelector";
+import { DatePicker } from "./DateRangeSelector";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import { TodoDate } from './TodoDate'
@@ -11,29 +11,26 @@ import './App.css'
 let obj = {};
 
 function App() {
-  let [today, setToday] = useState(moment().format('YYYY-MM-DD'))
   let [todo, setTodo] = useState("")
   let [list,setList] = useState()
   let [date , setDate] = useState(moment().format('YYYYMMDD'))
-  let reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
-  let day = today.replace(reg, "");
   
   useEffect(() => {
     if(Object.values(obj) != null){
-      setList(list = obj[day])
+      setList(list = obj[date])
     }
-  }, [today])
+  }, [date])
 
   function PushTodo(){
-    if(obj[day] === undefined){
-      obj[day] = [];
-      obj[day].push(todo)
+    if(obj[date] === undefined){
+      obj[date] = [];
+      obj[date].push(todo)
     }
     else{
-      obj[day].push(todo)
+      obj[date].push(todo)
     }
     setTodo("")
-    setList(list = obj[day])
+    setList(list = obj[date])
   }
 
   return(<div>
@@ -43,12 +40,11 @@ function App() {
     <div>
       <div>
         <h3>날짜를 선택해주세요</h3>
-        <DayPickerRangeController value={date} onChange={setDate}/>
+        <DatePicker value={date} onChange={setDate}/>
         <button onClick={e=> console.log(date)}></button>
-        <TodoDate value={today} onChange={setToday}/>
       </div>
       <div>
-        <div>{today} 할 일 목록</div>
+        <div>{date} 할 일 목록</div>
         <List value={list}/>
       </div>
     </div>

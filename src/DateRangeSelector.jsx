@@ -1,25 +1,27 @@
-import React, { useState } from "react";
-import { DayPickerRangeController } from "react-dates";
+import React, { useState, useEffect } from "react";
+import { render } from "react-dom";
+import { SingleDatePicker } from "react-dates";
 import moment from "moment";
-import "moment/locale/ko"
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
 
-export function DateRangeSelector(props){
-  let [date, setDate] = useState();
-  let [focused , setFocused] = useState();
-  moment.locale('ko');
-
-  return(
+export function DatePicker(props) {
+  const [date, setDate] = useState(moment());
+  const [focused, setFocused] = useState(false);
+  useEffect(() => {
+    props.onChange(date.format('YYYYMMDD'))
+  }, [date])
+  return (
     <div>
-      <DayPickerRangeController
-          startDate={date}
-          onDateChange={(date) => setDate(date)}
-          focusedInput={focused}
-          onFocusChange={({focused}) => setFocused(true)}
-          initialVisibleMonth={() => moment().add(0, "M")}
+      <SingleDatePicker
+        onDateChange={date => setDate(date)}
+        onFocusChange={({ focused }) => setFocused(focused)}
+        focused={focused}
+        date={date}
       />
-      <button onClick={e=> console.log(focused)}></button>
+      <div>
+        <button onClick={e => console.log(date.format('YYYYMMDD'))}>date</button>
+      </div>
     </div>
-  )
+  );
 }
-
-export default DateRangeSelector;
