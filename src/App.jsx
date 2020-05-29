@@ -7,6 +7,7 @@ import { AddTodo } from './AddTodo'
 import { List } from './List'
 import moment from "moment";
 import './App.css'
+import logo from './logo.png'
 
 let obj = {};
 
@@ -14,6 +15,8 @@ function App() {
   let [todo, setTodo] = useState("")
   let [list,setList] = useState()
   let [date , setDate] = useState(moment().format('YYYYMMDD'))
+  let [todayYM , setTodayYM] = useState()
+  let [todayD , setTodayD] = useState()
   
   useEffect(() => {
     if(Object.values(obj) != null){
@@ -34,25 +37,23 @@ function App() {
   }
 
   return(<div>
-    <div className="header">
-      <h1>투두 리스트</h1>
-    </div>
-    <div>
-      <div>
-        <h3>날짜를 선택해주세요</h3>
-        <DatePicker value={date} onChange={setDate}/>
-        <button onClick={e=> console.log(date)}></button>
+    <div className="todo_textbox">
+      <div className="logo_box">
+        <img src={logo} alt="logo" className="logo"/>
+      </div>
+      <div className="date_text">
+        {todayYM}<br/>{todayD}
       </div>
       <div>
-        <div>{date} 할 일 목록</div>
+        <AddTodo value={todo} onChange={setTodo} onClick={e => PushTodo()}/>
+      </div>
+      <div>
         <List value={list}/>
       </div>
     </div>
-
-    <div>
-      <AddTodo value={todo} onChange={setTodo} onClick={e => PushTodo()}/>
+    <div className="todo_calendarbox">
+      <DatePicker onChange={setDate} onChangeYM={setTodayYM} onChangeD={setTodayD}/>
     </div>
-
   </div>);
 }
 

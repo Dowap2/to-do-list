@@ -1,8 +1,79 @@
-.header{
-    width: 100%;
-    height: 60px;
-    background: wheat;
+.todo_textbox{
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    height: 100vh;
+    float: left;
+    background: #4AC2B0;
+    color: white;
 }
-.calendar{
-    background: wheat;
+.todo_calendarbox{
+    margin: 0;
+    padding: 0;
+    width: 60%;
+    height: 100vh;
+    float: left;
+}
+.logo_box{
+    width: 100%;
+    height: 30%;
+}
+.logo{
+    width: 160px;
+    height: 38px;
+    margin-top: 100px;
+    margin-left: 60px;
+}
+.date_text{
+    font-size: 80px;
+    font-weight: 200;
+    margin: 60px;
+}
+.todo_input{
+    margin-top: 40px;
+    margin-left: 60px;
+    width: 60%;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #ffffff;
+    font-size: 20px;
+    color: #ffffff;
+    padding: 6px 0;
+    background: transparent;
+}
+input::placeholder {
+    color:#ffffff;
+    font-style: italic;
+}
+.todo_listbox{
+    margin-left: 60px;
+    margin-top: 40px;
+}
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+input[type="checkbox"]{
+    width: 18px; 
+    height: 18px; 
+    background: #ffffff;
+    border-radius: 100%;
+    cursor: pointer; 
+}
+input[type="checkbox"]:checked{
+    background: #020038;
+}
+.todo{
+    font-size: 20px;
+}
+.todo_checkbox{
+    margin-right: 20px;
+}
+.todo_list{
+    display: flex;
+    margin-top: 20px;
+}
+.date_box{
+    margin: 220px
 }

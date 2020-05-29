@@ -6,15 +6,16 @@ export function List(props){
     if(list != undefined){
         let len = list.length;
         for(let i = 0; i<len; i++){
-            arr.push(<div>
-                {list[i]}
-                <input type="checkbox"/>
-            </div>)
+            arr.push(
+            <div className="todo_list">
+                <input type="checkbox" className="todo_checkbox"/>
+                <label className="todo">{list[i]}</label>
+            </div>
+            )
         }
     }
     return(
-        <div>
-            <button>일정 전체 삭제</button>
+        <div className="todo_listbox">
             {arr}
         </div>
     )
