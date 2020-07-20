@@ -3,7 +3,7 @@ import React from 'react';
 export function List(props){
     let list = props.value;
     let arr = [];
-    if(list != undefined){
+    if(list !== undefined){
         let len = list.length;
         for(let i = 0; i<len; i++){
             arr.push(

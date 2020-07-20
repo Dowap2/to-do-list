@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { DatePicker } from "./DateRangeSelector";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import { TodoDate } from './TodoDate'
 import { AddTodo } from './AddTodo'
 import { List } from './List'
 import moment from "moment";

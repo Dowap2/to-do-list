@@ -4,7 +4,7 @@ import React from 'react';
 export function AddTodo(props){
     function keyEvent(e) {
         let keyCode = e.keyCode;
-        if(keyCode == 13){
+        if(keyCode === 13){
             console.log(keyCode);
             props.onClick()
         }
